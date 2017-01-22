@@ -101,7 +101,7 @@ def compute_features(host='localhost', stime=5, rounds=5):
                     if features:
                         digest = compute_statistics.digest(features, stime)
                         list_features.append(digest)
-                        graphic_generator.plot(list_features, plt)
+                        #graphic_generator.plot(list_features, plt)
                         #if count==100: plt.show()
                     #count += 1
                 except KeyboardInterrupt:
@@ -111,4 +111,5 @@ def compute_features(host='localhost', stime=5, rounds=5):
             
             count += 1
             time.sleep(stime)
+        graphic_generator.plot(list_features, plt)
         plt.show()
