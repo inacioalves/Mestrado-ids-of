@@ -26,3 +26,6 @@ sleep 140; clear; for i in `seq 10`;do nmap -A  10.0.0.12;done;
 
 for i in `seq 40`;do wget -O - www.ifce.edu.br;sleep $((RANDOM%6));wget -O - www.ufc.br;sleep $((RANDOM%6));wget -O - www.uece.br;sleep $((RANDOM%6));  wget -O - www.facebook.com;  wget -O - www.google.com;sleep $((RANDOM%6));  wget -O - www.globo.com; wget -O - www.uol.com.br; wget -O - blastingnews.com;wget -O - yahoo.com;wget -O - blogspot.com.br;wget -O - olx.com.br;sleep $((RANDOM%6));done
 
+
+
+ sleep 120; t=$((RANDOM%35+1));for i in `seq 10`;do nmap -A -T4 10.0.0.$t;done;sleep 150; t=$((RANDOM%35+1));for i in `seq 10`;do nmap -A -T4 10.0.0.$t;done;

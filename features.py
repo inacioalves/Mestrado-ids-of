@@ -8,6 +8,8 @@ import ipaddress
 import compute_statistics
 import graphic_generator
 import matplotlib.pyplot as plt
+import os
+from datetime import datetime
 
 def compose_feature(switch, flow, count):
     match = flow["match"]
@@ -84,7 +86,7 @@ def get_json(host):
         return None
 
 
-def compute_features(host='localhost', stime=5, rounds=5):
+def compute_features(index, host='localhost', stime=5, rounds=5, prefix="local", save=False):
     db_name = createdb.create_db()
     print("DB_Name: " + db_name)
     count = 1
@@ -112,4 +114,15 @@ def compute_features(host='localhost', stime=5, rounds=5):
             count += 1
             time.sleep(stime)
         graphic_generator.plot(list_features, plt)
-        plt.show()
+        #plt.show()
+        if save:
+            rootdir=os.path.dirname(os.path.abspath(__file__))      
+            #end = str(datetime.now()).replace('-','').replace(' ','-').replace(':','')[2:13]
+            dtime = str(datetime.now()).replace('-','').replace(':','')
+            end_date = dtime[2:8]
+            end_time = dtime[9:15]
+            fig_dir = os.path.join(rootdir,prefix,end_date)
+            if not os.path.exists(fig_dir):
+                os.makedirs(fig_dir)
+            fig_name = 'fig%s.png'%end_time
+            plt.savefig( os.path.join(fig_dir,fig_name) )

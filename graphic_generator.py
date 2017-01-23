@@ -62,7 +62,12 @@ def plot(features, plt):
 
     fig = plt.figure(1)
     fig.clf()
-    fig.dpi=80
+    f2 = plt.gcf()
+    DPI = 80
+    f2.set_size_inches(1910.0/float(DPI),976.0/float(DPI))
+    fig.dpi = DPI
+    #fig.figsize=(2100,1220)
+
 
     c1 = ['blue']
     c2 = ['blue', 'green']
@@ -74,7 +79,7 @@ def plot(features, plt):
     graphic([f[5],f[6], f[8]], plt, 'packets', 3, c3)
     graphic([f[9],f[10], f[12]], plt, 'bytes', 4, c3)
 
-    graphic([f[14],f[15], f[16]], plt, 'duration', 5, c3)
+    graphic([f[13],f[14], f[16]], plt, 'duration', 5, c3)
     graphic([f[17],f[18], f[20]], plt, 'bytes/sec', 6, c3)
     graphic([f[21],f[22], f[24]], plt, 'packets/sec', 7, c3)
     graphic([f[25],f[26], f[28]], plt, 'bytes/packets', 8, c3)
